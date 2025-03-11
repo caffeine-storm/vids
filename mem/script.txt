@@ -1,0 +1,12 @@
+Here's how you can think about "memory"
+
+- Imagine a number line
+- Now put a box at each number
+- Each of these boxes can hold a number
+
+Now you can do two things
+	1. read a number from a box
+	2. write a number to a box
+
+It's called "memory" because each box "remembers" what was written to it last.
+If you read a box, you will get the value that was last written there. 
