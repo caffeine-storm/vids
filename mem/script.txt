@@ -1,12 +1,17 @@
 Here's how you can think about "memory"
 
 - Imagine a number line
-- Now put a box at each number
-- Each of these boxes can hold a number
+
+- Let's ignore all the negative numbers
+- Now, let's give each whole number a box
+- But it'll be easier to draw like this with zero at the top
+
+- Each of these boxes can, itself, has one number in it
 
 Now you can do two things
-	1. read a number from a box
-	2. write a number to a box
+	1. look at what number is in a box
+	2. put a number in a box
+		- but, because there can only be one number, we have to replace whatever is there
 
-It's called "memory" because each box "remembers" what was written to it last.
-If you read a box, you will get the value that was last written there. 
+It's called "memory" because each box "remembers" the last thing that got put
+into it. If you look into a box, you will get the value that 
