@@ -6,6 +6,7 @@ class Memory(Scene):
 			'x_range': [-8, 8, 1],
 			'unit_size': 0.25,
 			'font_size': 12,
+			'color': ManimColor("#00FF00"),
 		}
 
 		dashl = NumberLine(**kwargs)
