@@ -19,6 +19,7 @@ class Memory(Scene):
 
         kwargs['rotation'] = -PI/2
         kwargs['label_direction'] = LEFT
+        kwargs['unit_size'] = 0.45
         vertl = NumberLine(**kwargs)
 
         self.play(Create(dashl))  # animate the creation of the numberline
