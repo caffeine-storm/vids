@@ -15,6 +15,12 @@ dependencies = [
 [tool.poetry]
 package-mode = false
 
+[tool.poe.tasks]
+lint = "mypy mem/main.py"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.15.0"
+poethepoet = "^0.34.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
