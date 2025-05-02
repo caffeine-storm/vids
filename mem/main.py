@@ -2,12 +2,37 @@ from manim import *
 
 from typing import List
 
+caffeine_green = ManimColor("#00FF00")
+
+class MemoryCell(VMobject):
+    def __init__(self, addr: int, width, height):
+        super().__init__()
+        self.add(Integer(number=addr, color=caffeine_green))
+        self.add(Rectangle(width=width, height=height, color=caffeine_green))
+
+    def realign(self, target, direction):
+        self.submobjects[1].align_to(target, direction)
+        self.submobjects[0].next_to(self.submobjects[1], LEFT * 0.5)
+
+# TODO: should we just use https://pypi.org/project/manim-dsa/ ?
 class MemoryLadder(VGroup):
-    def __init__(self, width, height, labels:List[int]):
+    def __init__(self, width:int, height:int, labels:List[int]):
         super().__init__()
         self.labels = labels
-        grid = Rectangle(height=height, width=width, grid_ystep=height/len(labels))
-        self.add(grid)
+        self.cells = list()
+        cells = VGroup()
+        for label in labels:
+            cell = MemoryCell(addr=label, height=height/len(labels), width=width)
+            self.cells.append(cell)
+            cells += cell
+
+        cells.arrange(DOWN, buff=0)
+
+        baseline = self.cells[0].submobjects[1]
+        for cell in self.cells:
+            cell.realign(baseline, LEFT)
+
+        self.add(cells)
 
 class Memory(Scene):
     def construct(self):
@@ -15,7 +40,7 @@ class Memory(Scene):
             'x_range': [-8, 8, 1],
             'unit_size': 0.25,
             'font_size': 12,
-            'color': ManimColor("#00FF00"),
+            'color': caffeine_green,
         }
 
         dashl = NumberLine(**kwargs)
