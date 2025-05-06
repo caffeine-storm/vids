@@ -34,6 +34,10 @@ class MemoryLadder(VGroup):
 
         self.add(cells)
 
+def label_constructor(*args, **kwargs):
+    kwargs['color'] = caffeine_green
+    return MathTex(*args, **kwargs)
+
 class Memory(Scene):
     def construct(self):
         kwargs = {
@@ -46,6 +50,7 @@ class Memory(Scene):
         dashl = NumberLine(**kwargs)
 
         kwargs['include_numbers'] = True
+        kwargs['label_constructor'] = label_constructor
         nl = NumberLine(**kwargs)
 
         kwargs['x_range'] = [0, 16, 1]
@@ -56,7 +61,7 @@ class Memory(Scene):
         kwargs['unit_size'] = 0.45
         vertl = NumberLine(**kwargs)
 
-        mem = MemoryLadder(vertl.width*3, vertl.height, vertl.get_tick_marks())
+        mem = MemoryLadder(vertl.width*6, vertl.height, list(range(16)))
 
         self.play(Create(dashl))  # animate the creation of the numberline
         self.play(Transform(dashl, nl, replace_mobject_with_target_in_scene=True))
@@ -65,6 +70,6 @@ class Memory(Scene):
         self.pause(2)
         self.play(Transform(posl, vertl, replace_mobject_with_target_in_scene=True))
         self.pause(2)
-        self.play(Transform(vertl, mem))
-        self.pause(2)
-        #self.play(FadeOut(vertl))  # fade out animation
+        self.play(Transform(vertl, mem), replace_mobject_with_target_in_scene=True)
+        self.pause(5)
+        self.play(FadeOut(mem))  # fade out animation
