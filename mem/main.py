@@ -3,11 +3,12 @@ from manim import *
 from typing import List
 
 caffeine_green = ManimColor("#00FF00")
+memory_yellow = ManimColor("#FFFF00")
 
 class MemoryCell(VMobject):
     def __init__(self, addr: int, width, height):
         super().__init__()
-        self.add(Integer(number=addr, color=caffeine_green))
+        self.add(Text(str(addr), color=memory_yellow, font_size=12, font='Source Code Pro'))
         self.add(Rectangle(width=width, height=height, color=caffeine_green))
 
     def realign(self, target, direction):
