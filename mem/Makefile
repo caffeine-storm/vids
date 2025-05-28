@@ -8,6 +8,6 @@ ${PREVIEW}: main.py manim.cfg
 	manim --resolution 480,854 --fps 15 ./main.py
 
 go: ${PREVIEW}
-	mpv ${PREVIEW}
+	ffplay -loglevel 0 -autoexit ${PREVIEW}
 
 .PHONY: go
