@@ -1,17 +1,101 @@
+Here's how _you_ can think about programming and computers.
+
+There's a bunch of bite-sized videos.
+
+Each one tries to explain a small piece.
+
+To understand a video, you might need to know a few things first so each video
+tells you which videos you ought to understand ahead of time.
+
+After you understand a video, you might have questions or be curious about some
+details so each video points out follow-ups to deepen your understanding.
+
+You can start at a random spot or look for one that catches your attention.
+
+---
+
+Here's how you can think about a "number line"
+
+- So, imagine a line, drawn from left to right
+- We can pretend that it stretches on forever to the left and the right
+- We can pick a point on the line; it doesn't really matter where
+	- We'll make a little mark on the line
+	- We'll also label the mark with a zero
+
+- Then, a little ways to the right, we'll make a mark for one
+- And then a little further, we'll mark two
+- and so on and so on; we won't write them _all_ but we'll understand that each
+  number is out there somewhere
+
+- We'll go back to our zero mark and start labeling the negative numbers to the left
+
+This is a 'number line'; literally a line with numbers on it. The important things
+to remember are
+- Every number you can think of is _somewhere_ on this line.
+	- It might be far away enough that we didn't bother drawing it, but since the
+	  line doesn't end, we can always draw more until we find the number.
+- Each number of the numbers are in order
+	- If you stood at zero and walked to the right, you'd never see a number that
+	  was less than zero
+	- Vice-versa for walking to the left; anywhere you go is always less than
+	  where you've been
+
+Of course, there's much more to the story; check out
+- what can we use a number line for? (TODO)
+- are there things that aren't on the number line? (TODO)
+- what is computer memory?
+
+---
+
 Here's how you can think about "memory"
 
-- Imagine a number line
+First, you'll want to understand what a "number line" is; you can look _here_
+to learn about it.
 
-- Let's ignore all the negative numbers
-- Now, let's give each whole number a box
-- But it'll be easier to draw like this with zero at the top
+- So, imagine a number line
+- But let's not worry about the negative numbers; we'll only use zero and up
+- Then we can draw it like this with zero at the top
+- Now, let's give each number a box
 
-- Each of these boxes can, itself, has one number in it
+You can think of "memory" as this: just a sequence of boxes with a couple rules
+- Each of these boxes has exactly one number in it
+- Each box has a 'name', more commonly known as an 'address', that is unique to
+  that box
+	- we might say it 'identifies' that box
+	- because we've got lots of memory, we use numbers to stand in for the names
 
-Now you can do two things
-	1. look at what number is in a box
-	2. put a number in a box
-		- but, because there can only be one number, we have to replace whatever is there
+It's called "memory" because each box will "remember" the last thing that got
+put into it.
 
-It's called "memory" because each box "remembers" the last thing that got put
-into it. If you look into a box, you will get the value that 
+Of course, there's much more to the story; check out
+	- how do we look at what's in a 'box'? how do we put something in to a 'box'?
+	- what kind of numbers can we put in memory? (TODO)
+	- what do the numbers in memory mean? (TODO)
+
+---
+
+Here's how you can think about "reading and writing to memory"
+
+First, you'll want to understand what memory is; you can look _here_ to learn
+about it.
+
+With memory, we can really only do one of two things; read values or write
+values.
+- read means: look at what number is in a box
+	- which box? you need to say which 'address'
+	- if we "read" address "4", we'd see that the value "111" is there.
+- write means: put a number in a box
+	- which box? you need to say which 'address'
+	- if we "write" the value "42" to "address" "4", we can see we replace the
+	  "111" with the "42"
+		- since each box can only hold one number, writing will always replace
+		  whatever happens to be there
+		- this is more commonly known as 'overwriting'; we're "writing over" and
+		  obscuring what used to be there
+
+Of course, there's much more to the story; check out
+	- how do we tell the computer to do a read or write? (TODO)
+	- where do values that are read/written go-to/come-from? (TODO)
+	- what kind of numbers can we put in memory? (TODO)
+	- what do the numbers in memory mean? (TODO)
+	- why does my computer stop me from writing to memory address 0? (TODO)
