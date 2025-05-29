@@ -10,4 +10,8 @@ ${PREVIEW}: main.py manim.cfg
 go: ${PREVIEW}
 	ffplay -loglevel 0 -autoexit ${PREVIEW}
 
-.PHONY: go
+debug: debug.py manim.cfg
+	manim render --resolution 480,854 debug.py
+	feh media/images/debug/DebugImg_ManimCE_v0.19.0.png
+
+.PHONY: go debug

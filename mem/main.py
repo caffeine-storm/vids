@@ -8,22 +8,27 @@ memory_yellow = ManimColor("#FFFF00")
 class MemoryCell(VMobject):
     def __init__(self, addr: int, width, height):
         super().__init__()
-        self.add(Text(str(addr), color=memory_yellow, font_size=12, font='Source Code Pro'))
-        self.add(Rectangle(width=width, height=height, color=caffeine_green))
+        self.addressLabel = Text(str(addr), color=memory_yellow, font_size=14, font='Source Code Pro')
+        self.add(self.addressLabel)
+
+        self.memoryValue = Rectangle(width=width, height=height, color=caffeine_green)
+        self.add(self.memoryValue)
+
+        self.addressLabel.next_to(self.memoryValue, LEFT * 0.5)
 
     def realign(self, target, direction):
-        self.submobjects[1].align_to(target, direction)
-        self.submobjects[0].next_to(self.submobjects[1], LEFT * 0.5)
+        self.memoryValue.align_to(target, direction)
 
 # TODO: should we just use https://pypi.org/project/manim-dsa/ ?
 class MemoryLadder(VGroup):
     def __init__(self, width:int, height:int, labels:List[int]):
         super().__init__()
+        print("MemoryLadder: width:", width, "height", height)
         self.labels = labels
         self.cells = list()
         cells = VGroup()
         for label in labels:
-            cell = MemoryCell(addr=label, height=height/len(labels), width=width)
+            cell = MemoryCell(addr=label, width=width, height=height/len(labels))
             self.cells.append(cell)
             cells += cell
 

@@ -1,0 +1,13 @@
+- rounded inner corners for memory cells
+  - gradient?
+- memory value background; grey? which grey?
+- allow hex formatting for memory addr
+- transition from [-n...+n] -> [0 ... m] should 'slide' the numbers
+- transition from vert line to memory ladder
+  - numberline numbers to Transform to memory addressess
+  - memory value 'boxes' to drawer-slide out from left extent
+    - width could transition from 0% to, say 110% to 100% for a 'bounce'
+    - stagger start times by index; n+1'th value starts once n'th is at, say 5% of timeline
+? style of memory value?
+  - roll-over 60's clock with 7-segment?
+  - for calling attention to cell: ShowPassingFlash animation
