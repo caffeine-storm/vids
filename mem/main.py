@@ -41,7 +41,7 @@ class MemoryLadder(VGroup):
         self.add(cells)
 
     def ReplaceNumLine(self, nl: NumberLine):
-        return Transform(nl, self)
+        return Transform(nl, self, replace_mobject_with_target_in_scene=True)
 
 def label_constructor(*args, **kwargs):
     kwargs['color'] = caffeine_green
@@ -70,7 +70,7 @@ class Memory(Scene):
         kwargs['unit_size'] = 0.45
         vertl = NumberLine(**kwargs)
 
-        mem = MemoryLadder(vertl.width*6, vertl.height, list(range(16)))
+        mem = MemoryLadder(vertl.width*6, vertl.height, list(range(17)))
 
         self.play(Create(dashl))  # animate the creation of the numberline
         self.play(Transform(dashl, nl, replace_mobject_with_target_in_scene=True))
@@ -79,6 +79,6 @@ class Memory(Scene):
         self.pause(2)
         self.play(Transform(posl, vertl, replace_mobject_with_target_in_scene=True))
         self.pause(2)
-        self.play(mem.ReplaceNumLine(vertl), replace_mobject_with_target_in_scene=True)
+        self.play(mem.ReplaceNumLine(vertl))
         self.pause(5)
         self.play(FadeOut(mem))  # fade out animation
