@@ -11,3 +11,4 @@
 ? style of memory value?
   - roll-over 60's clock with 7-segment?
   - for calling attention to cell: ShowPassingFlash animation
+- memory addresses should be right-aligned
