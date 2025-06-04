@@ -22,7 +22,7 @@ class MemoryCell(VMobject):
 
         self.box = Rectangle(width=width, height=height, color=caffeine_green)
         self.add(self.box)
-        self.value = VMobject(color=caffeine_green)
+        self.value = MemoryText(" ")
         self.value.move_to(self.box)
         self.add(self.value)
 
@@ -30,14 +30,19 @@ class MemoryCell(VMobject):
 
     def realign(self, target, direction):
         self.box.align_to(target, direction)
+        print(f"realign: from: {self.value.get_center()} to: {self.box.get_center()}")
         self.value.move_to(self.box)
 
     def assign(self, value):
-        thetext = MemoryText(str(value))
-        thetext.move_to(self.box)
-        oldtext = self.value
-        self.value = thetext
-        return Transform(oldtext, thetext, replace_mobject_with_target_in_scene=True)
+        newtext = MemoryText(str(value))
+        newtext.move_to(self.box)
+
+        print(f"assign: from: {self.value.get_center()} to: {newtext.get_center()}")
+
+        # TODO: for some reason, the old text is at the origin instead of lined
+        # up with the box? I'd rather that new values 'appear' in the cells
+        # instead of move to them.
+        return self.value.animate.become(newtext)
 
 # TODO: should we just use https://pypi.org/project/manim-dsa/ ?
 class MemoryLadder(VGroup):
@@ -50,7 +55,7 @@ class MemoryLadder(VGroup):
 
         self.cells.arrange(DOWN, buff=0)
 
-        baseline = self.cells[0].submobjects[1]
+        baseline = self.cells[0].box
         for cell in self.cells:
             cell.realign(baseline, LEFT)
 
@@ -66,7 +71,7 @@ class MemoryLadder(VGroup):
         animations = list()
         for i, val in enumerate(data):
             animations.append(self.cells[i].assign(val))
-        return LaggedStart(*animations, lag_ratio=0.2)
+        return LaggedStart(*animations, lag_ratio=0.07)
 
 def label_constructor(*args, **kwargs):
     kwargs['color'] = caffeine_green
