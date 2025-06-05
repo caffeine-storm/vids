@@ -28,12 +28,12 @@ class MemoryCell(VMobject):
 
         self.addressLabel.next_to(self.box, LEFT * 0.5)
 
-    def realign(self, target, direction):
+    def Realign(self, target, direction):
         self.box.align_to(target, direction)
         print(f"realign: from: {self.value.get_center()} to: {self.box.get_center()}")
         self.value.move_to(self.box)
 
-    def assign(self, value):
+    def Assign(self, value):
         newtext = MemoryText(str(value))
         newtext.move_to(self.box)
 
@@ -57,7 +57,7 @@ class MemoryLadder(VGroup):
 
         baseline = self.cells[0].box
         for cell in self.cells:
-            cell.realign(baseline, LEFT)
+            cell.Realign(baseline, LEFT)
 
         self.add(self.cells)
 
@@ -70,8 +70,12 @@ class MemoryLadder(VGroup):
     def Assign(self, data):
         animations = list()
         for i, val in enumerate(data):
-            animations.append(self.cells[i].assign(val))
+            animations.append(self.cells[i].Assign(val))
         return LaggedStart(*animations, lag_ratio=0.07)
+
+    def ForEach(self, fn):
+        for i, (label, cell) in enumerate(zip(self.labels, self.cells)):
+            yield fn(idx=i, label=label, cell=cell)
 
 def label_constructor(*args, **kwargs):
     kwargs['color'] = caffeine_green
@@ -116,5 +120,9 @@ class Memory(Scene):
         memcontents.extend(['\0' for _ in range(len(mem)-len(memcontents))])
         memcontents = list(map(ord, memcontents))
         self.play(mem.Assign(memcontents))
-        self.pause(5)
-        self.play(FadeOut(mem))  # fade out animation
+        self.pause(2)
+
+        self.play(LaggedStart(mem.ForEach(lambda cell, **kwargs: Wiggle(cell, rotation_angle=0)), lag_ratio=0.07, run_time=2))
+
+        self.pause(2)
+        self.play(FadeOut(mem))
