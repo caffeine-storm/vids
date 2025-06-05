@@ -125,4 +125,10 @@ class Memory(Scene):
         self.play(LaggedStart(mem.ForEach(lambda cell, **kwargs: Wiggle(cell, rotation_angle=0)), lag_ratio=0.07, run_time=2))
 
         self.pause(2)
+        self.play(LaggedStart(mem.ForEach(lambda cell, **kwargs: Wiggle(cell.value, rotation_angle=0, scale_value=1.7)), lag_ratio=0.07, run_time=2))
+
+        self.pause(2)
+        self.play(LaggedStart(mem.ForEach(lambda cell, **kwargs: Wiggle(cell.addressLabel, rotation_angle=0, scale_value=1.7)), lag_ratio=0.07, run_time=2))
+
+        self.pause(2)
         self.play(FadeOut(mem))
