@@ -56,24 +56,28 @@ to learn about it.
 - But let's not worry about the negative numbers; we'll only use zero and up
 - Then we can draw it like this with zero at the top
 - Now, let's give each number a box
-- And each box has a number in it
+- And, inside each box, we'll put another number
 
-You can think of "memory" as this: just a sequence of boxes with a couple rules
-- Each box always has exactly one number in it
-- Each box has a 'name'
-	- more commonly, the name is known as an 'address'
-	- every box has an address and no other box shares that address
-		- we might say it 'identifies' that box
-	- because we've got lots of memory, we use numbers to stand in for the names
+You can think of "memory" as this: just a sequence of boxes with a few rules to
+remember:
+- Each box always has exactly one number in it, commonly known as the 'value'
+- Each box has a 'name', commonly known as the 'address'
 
-It's called "memory" because each box will "remember" the last thing that got
-put into it.
+It's called "memory" because each box will "remember" whatever number is inside
+of it.
 
 Of course, there's much more to the story; check out
-	- how do we look at what's in a 'box'? how do we put something in to a 'box'? (TODO: reading and writing memory)
-	- what kind of numbers can we put in memory? (TODO: bytes)
-	- can we give a nicer name to a box? (TODO: pointers)
-	- what do the numbers in memory mean? (TODO: data+encoding)
+	- there are rules about what values we can use (TODO: bytes)
+	- there are rules about addresses too (TODO: memory-2)
+	- how does the computer use memory? (TODO: reading and writing memory)
+
+---
+
+what's a program? (TODO: what's a program)
+
+---
+
+what do the numbers in memory mean? (TODO: data+encoding)
 
 ---
 
